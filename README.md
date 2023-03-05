@@ -14,7 +14,9 @@ You can directly write `make` and use it.
 
 ## PHONYS
 > `fc`, `fclean`, `fclear` -> Clear both object and created products.
+
 > `c`, `clean`, `clear` -> Clear only object files
+
 > `re` -> Remake everything
 
 ## Code

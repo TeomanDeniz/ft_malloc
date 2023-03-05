@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #ifndef FT_MALLOC_H
-# define FT_MALLOC_H 0.3 // Version
+# define FT_MALLOC_H 0.0 // Version
 
 // Main memroy allocations
 
@@ -68,8 +68,7 @@ char	*_eeprom_262144_(register int __recursive__);
 void	*ft_malloc(register int size);
 
 /*
- * I wish i can add more stuffs in it like custom error/warning systems
- *     via using "#define"s, but norminette is restricts me a lot.
+ * Fucking code, don't use it
  */
 
 #endif

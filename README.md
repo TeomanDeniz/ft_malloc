@@ -8,7 +8,7 @@ You don't have to use `free()` when you used this function.
 
 <P ALIGN="CENTER"><IMG SRC="https://cdn.discordapp.com/attachments/630843149778157623/1081229311144640562/maximum-tension.png"></P>
 
-# Usage:
+# Setup:
 
 You can directly write `make` and use it.
 
@@ -19,7 +19,7 @@ You can directly write `make` and use it.
 
 > `re` -> Remake everything
 
-## Code
+# Utilization:
 
 You can use `ft_malloc()` exactly like same with original `malloc()` from `<stdlib.h>` library but without `free()` needed.
 

@@ -60,25 +60,3 @@ int
 	return (0);
 }
 ```
-
-## V0.2:
-
-This is creating needed size of static arrays in per use. This is the safer and most healthy way to allocate memory from the RAM
-
-⚠️ Bugs: There is limit that creation of same size of static variables in the memory.
-
-## V0.1:
-
-It is creating a doll static variable and returns it. But when the allocator function called second or a few more times: Then it is searches an ordered sized empty memory to use.
-
-This may be useful if you're writing a kernel.
-
-⚠️ Bugs: Really rarely: The value will be corrupts in big wokrs. Memory leak detecting only in `-fsanitize=address` sometimes idk, but `Valgrind` nor `Leaks` are showing nothing wrong during the progress.
-
-## V0.0:
-
-This is the most **shitty** way to allocate memory from RAM. For love of god please don't use it.
-
-It is creating a doll array variable, and returns it's address directly to use the place where the variable was used to.
-
-⚠️ Bugs: When using a standard function like `<stdio.h>`'s `printf` functon on a variable, it may corrupt the other variables suddenly.

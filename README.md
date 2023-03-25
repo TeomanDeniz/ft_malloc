@@ -63,7 +63,11 @@ int
 
 # How is it works?
 
-It is creating a static array in ordered size and returns it.
+I don't know.
+<BR>
+<BR>
+<BR>
+Just kidding: It is creating a static array in ordered size and returns it.
 
 But instead of returning the exact same size of memory allocation, it is sending a close value.
 

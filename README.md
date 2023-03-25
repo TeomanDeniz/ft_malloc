@@ -106,6 +106,6 @@ And lastly, we should do an extraction via received static value with ordered si
 
 Why we calculating the `if` like that?
 
-Because the before calculation is also includes the totlat used value of static variable. So, this is the smarter way to handle that.
+Because the before calculation is also includes the total used value of static variable. So, this is the smarter way to handle that.
 
 (`previous if wanted value`) - (`ordered size` + 1)

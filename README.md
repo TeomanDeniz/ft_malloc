@@ -49,7 +49,7 @@ int
 {
 	char	*test;
 
-	test = (char *) ft_malloc(10 * sizeof(char *));
+	test = (char) ft_malloc(10 * sizeof(char *));
 
 	test[0] = 'T';
 	test[1] = 'e';

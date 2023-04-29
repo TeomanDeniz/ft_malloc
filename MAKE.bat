@@ -6,7 +6,7 @@
 ::   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        ..
 ::                                                +#+#+#+#+#+   +#+           ..
 ::   Created: 2022/12/09 23:15:03 by hdeniz            #+#    #+#             ..
-::   Updated: 2023/03/23 15:28:49 by hdeniz           ###   ########.fr       ..
+::   Updated: 2023/04/29 15:28:49 by hdeniz           ###   ########.fr       ..
 ::                                                                            ..
 :: ************************************************************************** ..
 
@@ -19,7 +19,7 @@ SETLOCAL ENABLEEXTENSIONS ENABLEDELAYEDEXPANSION
 ::PHONY CLEAN CLEAR C
 ::PHONY FCLEAN FCLEAR FC
 
-SET "CC=GCC"
+SET "CC=TCC"
 REM [COMPILER]
 
 SET "NAME=ft_malloc.a"
@@ -68,7 +68,8 @@ GOTO :EOF
 	) ELSE (
 		ECHO.
 		ECHO.
-		ECHO  WARNING: "AR" IS NOT FOUND ON YOUR COMPUTER TO LIBRARY OBJECT FILES!
+		ECHO  WARNING: "AR" IS NOT FOUND ON YOUR COMPUTER!
+		ECHO  INFO: UNFORTUNATELY, WE CAN'T ARCHIVE YOUR OBJECT FILES.
 	)
 	SET PROGRESS=0
 GOTO :EOF
@@ -79,11 +80,11 @@ GOTO :EOF
 	ECHO.
 	WHERE "AR">NUL 2>NUL
 	IF !ERRORLEVEL! NEQ 0 (
-		ECHO  INFO: THIS WILL CAUSE SOME PROBLEMS ON YOUR PROGRAM.
-		ECHO        WE'RE GOING TO COMPILE "!MAIN!" MANUALLY WITHOUT "!NAME!"
-		!CC! !CFLAGS! "!MAIN!" "*.o" -o "!MAIN_NAME!.exe"||GOTO :ERROR
+		ECHO  INFO: WE'RE GOING TO COMPILE "!MAIN!" MANUALLY WITHOUT "!NAME!"
+		ECHO  WARNING: THIS WILL CAUSE SOME PROBLEMS ON YOUR PROGRAM.
+		!CC! !CFLAGS! !MAIN! "*.o" -o !MAIN_NAME!.exe||GOTO :ERROR
 	) ELSE (
-		!CC! !CFLAGS! "!MAIN!" "!NAME!" -o "!MAIN_NAME!.exe"||GOTO :ERROR
+		!CC! !CFLAGS! !MAIN! !NAME! -o !MAIN_NAME!.exe||GOTO :ERROR
 	)
 	ECHO.
 	ECHO  INFO: !MAIN_NAME!.exe DONE!
@@ -134,19 +135,13 @@ GOTO :EOF
 	SET /A PROGRESS=0
 	FOR /R %%# IN (!SRC!) DO IF NOT "%%~XN#"=="!MAIN!" SET /A SRC_FILE_NUM+=1
 
-	FOR %%# IN ("!NAME!") DO SET "NAME_NAME=%%~N#"
+	FOR %%# IN (!MAIN!) DO SET "MAIN_NAME=%%~N#"
 	IF NOT "%~1"=="" (
 		SET "PHONY=%~1"
 		FOR %%# IN ("a=A" "b=B" "c=C" "d=D" "e=E" "f=F" "g=G" "h=H" "i=I" "j=J" "k=K" "l=L" "m=M" "n=N" "o=O" "p=P" "q=Q" "r=R" "s=S" "t=T" "u=U" "v=V" "w=W" "x=X" "y=Y" "z=Z") DO (
 			SET PHONY=!PHONY:%%~#!
 		)
-		IF "!PHONY!"=="!NAME_NAME!" (
-			IF EXIST "!NAME!" DEL "!NAME!"
-			GOTO :NAME
-		) ELSE (
-			GOTO :!PHONY!
-			GOTO :FORCE_OUT 0
-		)
+		GOTO :!PHONY! || CALL :ERROR_PHONY
 	)
 GOTO :ALL
 
@@ -167,10 +162,17 @@ GOTO :EOF
 
 :ERROR_MAIN
 	ECHO.
-	ECHO  ERROR: !MAIN! IS NOT EXIST!
+	ECHO  WARNING: !MAIN! IS NOT EXIST!
 	ECHO  CURRENT CD: [!CD!]
 	CALL :PAUSE
 GOTO :FORCE_OUT 1
+
+:ERROR_PHONY
+	ECHO.
+	ECHO  ERROR: !PHONY! UNKNOWN PHONY ORDERED!
+	CALL :PAUSE
+GOTO :FORCE_OUT 1
+
 
 :ERROR_COMPILER
 	ECHO.

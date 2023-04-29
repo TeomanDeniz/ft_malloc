@@ -6,7 +6,7 @@
 #    By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/12 23:15:03 by hdeniz            #+#    #+#              #
-#    Updated: 2023/03/23 16:07:49 by hdeniz           ###   ########.fr        #
+#    Updated: 2023/04/29 16:07:49 by hdeniz           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,12 +53,7 @@ $(NAME): files_n_calculator $(OBJ)
 	@echo ""
 	@echo " $(shell tput setab 2)$(shell tput setaf 15)$(NAME) Done !$(shell tput sgr0)"
 	@echo ""
-	@if [ -a $(MAIN) ]; \
-	then \
-		$(CC) $(FLAGS) $(MAIN) $(NAME) -o $(MAIN:.c=); \
-		echo " $(shell tput setab 2)$(shell tput setaf 15)$(MAIN) Done !$(shell tput sgr0)" ; \
-		echo "" ; \
-	fi;
+	@$(CC) $(FLAGS) $(MAIN) $(NAME) -o $(MAIN:.c=) && @echo " $(shell tput setab 2)$(shell tput setaf 15)$(MAIN) Done !$(shell tput sgr0)" && @echo ""
 
 c: clean
 clear: clear
@@ -71,20 +66,9 @@ clean:
 fc: fclean
 fclear: fclean
 fclean: clean
-	@if [ -a $(NAME) ]; \
-	then \
-		rm -f $(NAME) ; \
-		echo "" ; \
-		echo " $(shell tput setab 1)$(shell tput setaf 11)$(NAME)$(shell tput setaf 15) deleted$(shell tput sgr0)" ; \
-		echo "" ; \
-	fi;
-	@if [ -a $(MAIN:.c=) ]; \
-	then \
-		rm -f $(MAIN:.c=) ; \
-		echo "" ; \
-		echo " $(shell tput setab 1)$(shell tput setaf 11)$(MAIN:.c=)$(shell tput setaf 15) deleted$(shell tput sgr0)" ; \
-		echo "" ; \
-	fi;
+	@rm -f $(NAME) && @echo "" && @echo " $(shell tput setab 1)$(shell tput setaf 11)$(NAME)$(shell tput setaf 15) deleted$(shell tput sgr0)" && @echo ""
+	@rm -f $(MAIN:.c=) && @echo "" && @echo " $(shell tput setab 1)$(shell tput setaf 11)$(MAIN:.c=)$(shell tput setaf 15) deleted$(shell tput sgr0)"
+	@echo ""
 
 n: norminette
 norm: norminette

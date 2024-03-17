@@ -4,9 +4,9 @@
 
 You don't have to use `free()` when you used this function.
 
-<P ALIGN="CENTER"><IMG SRC="https://cdn.discordapp.com/attachments/630843149778157623/1081229366865956945/maximum-tension.png?ex=65eb27d1&is=65d8b2d1&hm=8c8b066045dc7947f7387c197f88235dcb8f6e0348c25f687d7cb023baf07081"></P>
+<P ALIGN="CENTER"><IMG SRC="https://raw.githubusercontent.com/TeomanDeniz/TeomanDeniz/main/images/repo_projects/ft_malloc/no_leaks.png"></P>
 
-<P ALIGN="CENTER"><IMG SRC="https://cdn.discordapp.com/attachments/630843149778157623/1081229311144640562/maximum-tension.png?ex=65eb27c4&is=65d8b2c4&hm=d6621986dfb7d825338a9da3b0819b421ca21dda34f0de10f404c1897dff46ba"></P>
+<P ALIGN="CENTER"><IMG SRC="https://raw.githubusercontent.com/TeomanDeniz/TeomanDeniz/main/images/repo_projects/ft_malloc/no_free.png"></P>
 
 # Setup:
 
@@ -87,13 +87,13 @@ It should return different same sized static arrays right?
 
 For that, we just need to do a little pyramid like an idler idiot.
 
-<P ALIGN="CENTER"><IMG SRC="https://cdn.discordapp.com/attachments/630843149778157623/1089172691908558848/ft_malloc.png?ex=65ec5e1d&is=65d9e91d&hm=dd73c3177ed068698501b63e9e10f77a7701b7a6f1e7f7ee1fb0000581345bee"></P>
+<P ALIGN="CENTER"><IMG SRC="https://raw.githubusercontent.com/TeomanDeniz/TeomanDeniz/main/images/repo_projects/ft_malloc/ft_malloc.png"></P>
 
 This is the a part of the algorithm showing how it is working.
 
 We created a static integer that choices different same sized arrays as you ordered.
 
-<P ALIGN="CENTER"><IMG SRC="https://cdn.discordapp.com/attachments/630843149778157623/1088552814676021259/1.png?ex=65ea1ccf&is=65d7a7cf&hm=2c1e8d906dd0b12f11daf4e193231e9d9d7151d1ce6264cfddd70328d75b020a"></P>
+<P ALIGN="CENTER"><IMG SRC="https://raw.githubusercontent.com/TeomanDeniz/TeomanDeniz/main/images/repo_projects/ft_malloc/1.png"></P>
 
 But as you can see at that image, something strange mathematical calculation happening in `if` commands.
 
@@ -102,7 +102,7 @@ They are for: when we sending the static integer to function that creating the o
 So, for that: We should also add in `if` command previous calculated static variable values.
 And lastly, we should do an extraction via received static value with ordered size, and bob's your uncle.
 
-<P ALIGN="CENTER"><IMG SRC="https://cdn.discordapp.com/attachments/630843149778157623/1088552802508341359/2.png?ex=65ea1ccc&is=65d7a7cc&hm=e307dbe03e33f3be69e603b9eead898a4cfc9ec24bf835429a888afa7229faff"></P>
+<P ALIGN="CENTER"><IMG SRC="https://raw.githubusercontent.com/TeomanDeniz/TeomanDeniz/main/images/repo_projects/ft_malloc/2.png"></P>
 
 Why we calculating the `if` like that?
 
